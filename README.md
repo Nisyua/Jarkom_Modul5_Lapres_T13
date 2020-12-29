@@ -249,3 +249,9 @@ Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00
   * Cek tanggal untuk memeriksa apakah sudah sesuai perintah
   
   ![]()
+
+### No. 6
+Bibah ingin SURABAYA disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada PROBOLINGGO port 80 dan MADIUN port 80.
+
+### No. 7
+Bibah ingin agar semua paket didrop oleh firewall (dalam topologi) tercatat dalam log pada setiap UML yang memiliki aturan drop.
