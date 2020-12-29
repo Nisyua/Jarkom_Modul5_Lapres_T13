@@ -4,21 +4,22 @@
 * Desya Ananda Puspita Dewi 05311840000046
 
 ### Topologi
+Metode yang digunakan yaitu dengan menggunakan VLSM, dengan pengelompokan seperti gambar berikut : 
+  ![](/img/topo.png)
+  
+  |SUBNET |	JUMLAH IP	|NETMASK	|
+  |-------|-----------|--------|
+  |  A1	  |      2	   |   /30  |	
+  |  A2	  |      2	   |   /30  |
+  |  A3	  |      3	   |   /29  |	
+  |  A4	  |      3	   |   /29  |	
+  |  A5	  |     211	  |   /24	 |
+  |  A6   |     201	  |   /24	 |
+  |**TOTAL**|  **419**  | **/23**|
+  
+Didapatkan pohon VLSM sebagai berikut:
+  ![](/img/vlsm.png)
 
-|SUBNET |	JUMLAH IP	|NETMASK	|
-|-------|-----------|--------|
-|  A1	  |      2	   |   /30  |	
-|  A2	  |      2	   |   /30  |
-|  A3	  |      3	   |   /29  |	
-|  A4	  |      3	   |   /29  |	
-|  A5	  |     211	  |   /24	 |
-|  A6   |     201	  |   /24	 |
-| TOTAL |    419	   |   /23	 |
-
-### Subnetting
-
-
-### Routing
   * Setting pada Putty dengan file topo.sh berisi :
   ```
   # Switch
@@ -44,7 +45,9 @@
   xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,switch5 mem=96M &
   xterm -T GRESIK -e linux ubd0=GRESIK,jarkom umid=GRESIK eth0=daemon,,,switch4 mem=96M &
   ```
+  * Jalankan perintah `bash topo.sh` untuk menjalankan UML
 
+### Routing
   * Kemudian settting interfaces tiap uml seperti berikut :
   ```
   SURABAYA (Sebagai Router)
@@ -139,8 +142,6 @@ address 10.151.77.156
 netmask 255.255.255.248
 gateway 10.151.77.153
 
-
-
 SIDOARJO (Sebagai Klien)
 auto lo
 iface lo inet loopback
@@ -150,7 +151,6 @@ iface eth0 inet static
 address 192.168.2.2
 netmask 255.255.255.0
 gateway 192.168.2.1
-
 
 GRESIK (Sebagai Klien)
 auto lo
