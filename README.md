@@ -5,7 +5,7 @@
 
 ### Topologi
 Metode yang digunakan yaitu dengan menggunakan VLSM, dengan pengelompokan seperti gambar berikut : 
-  ![](/img/topo.JPG)
+  ![](/topo.JPG)
   
   |SUBNET |	JUMLAH IP	|NETMASK	|
   |-------|-----------|--------|
