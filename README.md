@@ -184,8 +184,36 @@ Didapatkan pohon VLSM sebagai berikut:
   ```
   
 ### DHCP Server
+  * Install dhcp server pada UML Mojokerto
+  * Lakukan instalasi dengan menggunakan perintah `apt-det install isc-dhcp-server`
+  * tambahkan konfigurasi pada file `/etc/dhcp/dhcpd.conf` :
+  ```
+  subnet 10.151.77.152 netmask 255.255.255.248 {
+}
 
+subnet 192.168.2.0 netmask 255.255.255.0 {
+        range 192.168.2.2 192.168.2.201;
+        option routers 192.168.2.1;
+        option broadcast-address 192.168.2.255;
+        option domain-name-servers 10.151.77.154 , 202.46.129.2 , 10.151.36.7;
+        default-lease-time 600;
+        max-lease-time 700;
+}
+
+subnet 192.168.1.0 netmask 255.255.255.0 {
+        range 192.168.1.2 192.168.1.211;
+        option routers 192.168.1.1;
+        option broadcast-address 192.168.1.255;
+        option domain-name-servers 10.151.77.154 , 202.46.129.2 , 10.151.36.7;
+        default-lease-time 600;
+        max-lease-time 7200;
+}
+  ```
+  * Lakukan `service isc-dhcp-server restart` untuk menjalankan
+  
 ### DHCP Relay
+  * Setting DHCP Relay pada UML BATU dan KEDIRI
+  * Lakukan instalasi dengan menggunakan perintah `apt-det install isc-dhcp-relay`
 
 ### No. 1 
 Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk mengkonfigurasi SURABAYA menggunakan iptables, namun Bibah tidak ingin kalian menggunakan MASQUERADE.
