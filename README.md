@@ -51,136 +51,136 @@ Didapatkan pohon VLSM sebagai berikut:
   * Kemudian settting interfaces tiap uml seperti berikut :
   ```
   SURABAYA (Sebagai Router)
-auto lo
-iface lo inet loopback
+  auto lo
+  iface lo inet loopback
 
-auto eth0
-iface eth0 inet static
-address 10.151.76.78
-netmask 255.255.255.252
-gateway 10.151.76.77
+  auto eth0
+  iface eth0 inet static
+  address 10.151.76.78
+  netmask 255.255.255.252
+  gateway 10.151.76.77
 
-auto eth1
-iface eth1 inet static
-address 192.168.0.1
-netmask 255.255.255.252
-post-up route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.0.2
-post-down route del -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.0.2
-post-up route add -net 192.168.0.16 netmask 255.255.255.248 gw 192.168.0.2
-post-down route del -net 192.168.0.16 netmask 255.255.255.248 gw 192.168.0.2
+  auto eth1
+  iface eth1 inet static
+  address 192.168.0.1
+  netmask 255.255.255.252
+  post-up route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.0.2
+  post-down route del -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.0.2
+  post-up route add -net 192.168.0.16 netmask 255.255.255.248 gw 192.168.0.2
+  post-down route del -net 192.168.0.16 netmask 255.255.255.248 gw 192.168.0.2
 
-auto eth2
-iface eth2 inet static
-address 192.168.0.5
-netmask 255.255.255.252
-post-up route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.6
-post-down route del -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.6
-post-up route add -net 10.151.77.152 netmask 255.255.255.248 gw 192.168.0.6
-post-down route del -net 10.151.77.152 netmask 255.255.255.248 gw 192.168.0.6
+  auto eth2
+  iface eth2 inet static
+  address 192.168.0.5
+  netmask 255.255.255.252
+  post-up route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.6
+  post-down route del -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.6
+  post-up route add -net 10.151.77.152 netmask 255.255.255.248 gw 192.168.0.6
+  post-down route del -net 10.151.77.152 netmask 255.255.255.248 gw 192.168.0.6
 
-KEDIRI (Sebagai Router)
-auto lo
-iface lo inet loopback
+  KEDIRI (Sebagai Router)
+  auto lo
+  iface lo inet loopback
 
-auto eth0
-iface eth0 inet static
-address 192.168.0.2
-netmask 255.255.255.252
-gateway 192.168.0.1
-post-up route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
-post-down route del -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
+  auto eth0
+  iface eth0 inet static
+  address 192.168.0.2
+  netmask 255.255.255.252
+  gateway 192.168.0.1
+  post-up route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
+  post-down route del -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
+  
+  auto eth1
+  iface eth1 inet static
+  address 192.168.1.1
+  netmask 255.255.255.0
 
-auto eth1
-iface eth1 inet static
-address 192.168.1.1
-netmask 255.255.255.0
+  auto eth2
+  iface eth2 inet static
+  address 192.168.0.9
+  netmask 255.255.255.248
+  
+  BATU (Sebagai Router)
+  auto lo
+  iface lo inet loopback
+  
+  auto eth0
+  iface eth0 inet static
+  address 192.168.0.6
+  netmask 255.255.255.252
+  gateway 192.168.0.5
+  post-up route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.5
+  post-down route del -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.5
+  
+  auto eth1
+  iface eth1 inet static
+  address 192.168.2.1
+  netmask 255.255.255.0
+  
+  auto eth2
+  iface eth2 inet static
+  address 10.151.77.153
+  netmask 255.255.255.248
+  
+  MALANG (Sebagai DNS Server)
+  auto lo
+  iface lo inet loopback
+  
+  auto eth0
+  iface eth0 inet static
+  address 10.151.77.154
+  netmask 255.255.255.248
+  gateway 10.151.77.153
 
-auto eth2
-iface eth2 inet static
-address 192.168.0.9
-netmask 255.255.255.248
+  MOJOKERTO (Sebagai DHCP Server)
+  auto lo
+  iface lo inet loopback
 
-BATU (Sebagai Router)
-auto lo
-iface lo inet loopback
+  auto eth0
+  iface eth0 inet static
+  address 10.151.77.156
+  netmask 255.255.255.248
+  gateway 10.151.77.153
 
-auto eth0
-iface eth0 inet static
-address 192.168.0.6
-netmask 255.255.255.252
-gateway 192.168.0.5
-post-up route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.5
-post-down route del -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.5
+  SIDOARJO (Sebagai Klien)
+  auto lo
+  iface lo inet loopback
 
-auto eth1
-iface eth1 inet static
-address 192.168.2.1
-netmask 255.255.255.0
+  auto eth0
+  iface eth0 inet static
+  address 192.168.2.2
+  netmask 255.255.255.0
+  gateway 192.168.2.1
 
-auto eth2
-iface eth2 inet static
-address 10.151.77.153
-netmask 255.255.255.248
+  GRESIK (Sebagai Klien)
+  auto lo
+  iface lo inet loopback
 
-MALANG (Sebagai DNS Server)
-auto lo
-iface lo inet loopback
+  auto eth0
+  iface eth0 inet static
+  address 192.168.1.2
+  netmask 255.255.255.0
+  gateway 192.168.1.1
 
-auto eth0
-iface eth0 inet static
-address 10.151.77.154
-netmask 255.255.255.248
-gateway 10.151.77.153
+  PROBOLINGGO (Sebagai Web Server)
+  auto lo
+  iface lo inet loopback
 
-MOJOKERTO (Sebagai DHCP Server)
-auto lo
-iface lo inet loopback
+  auto eth0
+  iface eth0 inet static
+  address 192.168.0.11
+  netmask 255.255.255.248
+  gateway 192.168.0.9
 
-auto eth0
-iface eth0 inet static
-address 10.151.77.156
-netmask 255.255.255.248
-gateway 10.151.77.153
+  MADIUN (Sebagai Web Server)
+  auto lo
+  iface lo inet loopback
 
-SIDOARJO (Sebagai Klien)
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.2.2
-netmask 255.255.255.0
-gateway 192.168.2.1
-
-GRESIK (Sebagai Klien)
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.1.2
-netmask 255.255.255.0
-gateway 192.168.1.1
-
-PROBOLINGGO (Sebagai Web Server)
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.0.11
-netmask 255.255.255.248
-gateway 192.168.0.9
-
-MADIUN (Sebagai Web Server)
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.0.10
-netmask 255.255.255.248
-gateway 192.168.0.9
+  auto eth0
+  iface eth0 inet static
+  address 192.168.0.10
+  netmask 255.255.255.248
+  gateway 192.168.0.9
   ```
   
 ### DHCP Server
@@ -193,15 +193,23 @@ Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk meng
   ```
   iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to-source 10.151.76.78 -s 192.168.0.0
   ```
-  * Testing :
-
+  #### Testing :
+  * Testing dengan cara ping its.ac.id di UML
+  
+  ![](/img/no1.png)
+  
 ### No.2 
 Kalian diminta untuk mendrop semua akses SSH dari luar Topologi (UML) Kalian pada server yang memiliki ip DMZ (DHCP dan DNS SERVER) pada SURABAYA demi menjaga keamanan.
   * Pada UML Surabaya tambahkan perintah :
   ```
   iptables -A FORWARD -p tcp --dport 22 -d 10.151.77.152/29 -i eth0 -j DROP
   ```
-  * Testing :
+  #### Testing :
+  * Install netcat pada UML Malang `apt-get install netcat`
+  * Testing pada putty dengan `nc [IP MALANG]` => `NC 10.151.77.154`
+  * Testing pada UML Malang dan Mojokerto => `nc -l -p <nomor_port>`
+  
+  ![](/img/no2.png)
 
 ### No. 3
 Karena tim kalian maksimal terdiri dari 3 orang, Bibah meminta kalian untuk membatasi DHCP dan DNS server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan yang berasal dari mana saja menggunakan iptables pada masing masing server, selebihnya akan di DROP.
@@ -209,9 +217,12 @@ Karena tim kalian maksimal terdiri dari 3 orang, Bibah meminta kalian untuk memb
   ```
   iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP
   ```
-  * Testing : 
+  #### Testing :
+  * Testing dengan pin IP MALANG pada 4 UML yang berbeda
+  * Testing berhasil, apabila UML keempat yang melakukan ping tidak berjalan
   
-
+  ![](/img/no3.jpg)
+  
 ### No. 4
 Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat.
   * Pada UML Malang ditambahkan : 
@@ -219,7 +230,11 @@ Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada har
   iptables -A INPUT -s 192.168.2.0/24 -m time --timestart 07:00 --timestop 17:00 --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
   iptables -A INPUT -s 192.168.2.0/24 -j REJECT
   ```
-  * Testing :
+  #### Testing :
+  * Periksa tanggal pada UML untuk melakukan testing dengan perintah `date`
+  * Cek tanggal untuk memeriksa apakah sudah sesuai perintah
+  
+  ![](/img/no 4.png)
   
 ### No. 5
 Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00 setiap harinya.
@@ -229,4 +244,8 @@ Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00
   iptables -A INPUT -s 192.168.1.0/24 -m time --timestart 07:00 --timestop 17:01
   iptables -A INPUT -s 192.168.1.0/24 -m time --timestart 17:01 --timestop 06:59
   ```
-  * Testing :
+  #### Testing :
+  * Periksa tanggal pada UML untu kmelakukan testing dengan perintah `date`
+  * Cek tanggal untuk memeriksa apakah sudah sesuai perintah
+  
+  ![]()
